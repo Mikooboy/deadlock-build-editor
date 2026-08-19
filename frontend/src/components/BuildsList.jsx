@@ -42,7 +42,6 @@ export default function BuildsList({
                 onChange={(e) => onSearchChange?.(e.target.value)}
                 placeholder="Search build names"
                 className="build-search"
-                disabled={!hasBuilds}
                 id="build-search-id"
               />
             </div>
