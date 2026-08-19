@@ -24,6 +24,7 @@ export default function FilePicker({ onUpload, disabled }) {
 
   return (
     <div className="filepicker">
+      <div className="upload-panel-warning">!!! WARNING !!!<br/>Please create a backup of your builds file before editing!<br/>The game will reset files with invalid formatting or IDs at launch!</div>
       <label
         className={`drop-zone ${isDragging ? "dragging" : ""}`}
         onDragOver={(e) => {
@@ -45,7 +46,6 @@ export default function FilePicker({ onUpload, disabled }) {
           <span className="drop-zone-subtext">or click to browse</span>
         </div>
       </label>
-      <div className="upload-panel-warning">Please create a backup before editing!<br/>The game resets files with invalid formatting or IDs at launch!</div>
       <code className="upload-panel-file">\Steam\userdata\&lt;userid&gt;\1422450\remote\cfg\cached_hero_builds.kv3</code>
     </div>
   );

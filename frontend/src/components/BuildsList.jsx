@@ -117,7 +117,7 @@ export default function BuildsList({
                   <div className="ability-converter">
                     <div className="ability-converter-info">
                       Items/Abilities can be found in the <a target="_blank" href="https://github.com/SteamTracking/GameTracking-Deadlock/raw/refs/heads/master/game/citadel/pak01_dir/scripts/abilities.vdata">abilities.vdata</a>.
-                      Use the converter on the right to get the ID and use that in the JSON "abilityId" and "tags" fields.
+                      Use the converter on the right to get the ID and use that in the JSON fields.
                       Not all of the items/abilities work so you need to do some testing.
                     </div>
                   </div>
@@ -162,7 +162,24 @@ export default function BuildsList({
         <div className="editor-empty-overlay" aria-live="polite">
           <div className="upload-panel">
             <div className="upload-panel-header">
-              <p className="upload-panel-title">Deadlock Build JSON Editor</p>
+              <p className="upload-panel-title">Deadlock Build Editor</p>
+            </div>
+            <div className="upload-panel-info">
+              <div>
+                This tool allows you to edit your Deadlock builds as JSON. 
+              </div>
+              <div>
+                Item/Ability names can be found in <a target="_blank" href="https://github.com/SteamTracking/GameTracking-Deadlock/raw/refs/heads/master/game/citadel/pak01_dir/scripts/abilities.vdata">abilities.vdata</a>. 
+              </div>
+              <div>
+                You have to convert the item/ability name to it's ID in order to use it in the JSON.
+              </div>
+              <div>
+                Some items/abilities will cause the game to crash if you open a build containing them.
+              </div>
+              <div>
+                For all JSON fields that can be used you should check the <a target="_blank" href="https://github.com/SteamTracking/GameTracking-Deadlock/blob/master/Protobufs/citadel_gcmessages_common.proto#L783">CMsgHeroBuild</a> protobuf message!
+              </div>
             </div>
             <div className="upload-panel-actions">
               <FilePicker onUpload={onUpload} disabled={loading} />

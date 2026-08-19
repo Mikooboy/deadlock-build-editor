@@ -202,6 +202,27 @@ h2, h3 {
  align-items: stretch;
 }
 
+.upload-panel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+    text-align: left;
+    color: var(--muted);
+    align-self: center;
+    padding: 12px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.upload-panel-info a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    word-break: break-word;
+}
+
 .primary-button, .secondary-button, .convert-button, .save-button, .download-button {
  border: 1px solid var(--border-strong);
  border-radius: 6px;
