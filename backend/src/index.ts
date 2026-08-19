@@ -198,18 +198,29 @@ app.post("/api/builds", upload.single("file"), async (req, res) => {
 
     try {
         const stdout = await new Promise<string>((resolve, reject) => {
+            const pythonPath = "../deadlock-kv3-to-json/venv/bin/python";
+            const scriptPath = "../deadlock-kv3-to-json/api.py";
+
+            console.log("Python:", pythonPath);
+            console.log("Script:", scriptPath);
+            console.log("Input:", tempInput);
+            console.log("File size:", req.file?.size);
+
             execFile(
-                "../deadlock-kv3-to-json/venv/bin/python",
+                pythonPath,
                 [
-                    "../deadlock-kv3-to-json/api.py",
+                    scriptPath,
                     tempInput,
                 ],
                 {
                     maxBuffer: 10 * 1024 * 1024,
                 },
                 (error, stdout, stderr) => {
+                    console.log("Python stdout:", stdout);
+                    console.log("Python stderr:", stderr);
+
                     if (error) {
-                        console.error(stderr);
+                        console.error("Python error:", error);
                         reject(new Error("Python failed to process the file"));
                         return;
                     }
