@@ -199,7 +199,7 @@ app.post("/api/builds", upload.single("file"), async (req, res) => {
     try {
         const stdout = await new Promise<string>((resolve, reject) => {
             execFile(
-                "py",
+                "../deadlock-kv3-to-json/venv/bin/python",
                 [
                     "../deadlock-kv3-to-json/api.py",
                     tempInput,
