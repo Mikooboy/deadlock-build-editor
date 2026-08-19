@@ -71,7 +71,7 @@ export default function App() {
     fd.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:3000/api/builds", {
+      const res = await fetch("/api/builds", {
         method: "POST",
         headers: withSessionHeaders(),
         body: fd,
@@ -128,7 +128,7 @@ export default function App() {
       setError(null);
       setSaveFeedback({ type: "", message: "" });
 
-      const res = await fetch("http://localhost:3000/api/builds/edit", {
+      const res = await fetch("/api/builds/edit", {
         method: "POST",
         headers: withSessionHeaders({
           "Content-Type": "application/json",
@@ -172,7 +172,7 @@ export default function App() {
       const params = new URLSearchParams();
       if (fileId) params.set("fileId", fileId);
       if (kv3Path) params.set("path", kv3Path);
-      const url = `http://localhost:3000/api/builds/download?${params.toString()}`;
+      const url = `/api/builds/download?${params.toString()}`;
 
       const res = await fetch(url, {
         headers: withSessionHeaders(),
@@ -207,7 +207,7 @@ export default function App() {
       setAbilityIdLoading(true);
       setError(null);
 
-      const res = await fetch("http://localhost:3000/api/ability-id", {
+      const res = await fetch("/api/ability-id", {
         method: "POST",
         headers: withSessionHeaders({ "Content-Type": "application/json" }),
         body: JSON.stringify({ name: trimmed }),
@@ -236,7 +236,7 @@ export default function App() {
       const params = new URLSearchParams();
       if (fileId) params.set("fileId", fileId);
       if (kv3Path) params.set("path", kv3Path);
-      const url = `http://localhost:3000/api/builds/download?${params.toString()}`;
+      const url = `/api/builds/download?${params.toString()}`;
 
       const res = await fetch(url, {
         headers: withSessionHeaders(),
