@@ -278,7 +278,7 @@ app.post("/api/ability-id", async (req, res) => {
     try {
         const stdout = await new Promise<string>((resolve, reject) => {
             execFile(
-                "py",
+                "../deadlock-kv3-to-json/venv/bin/python",
                 [
                     "-c",
                     `from murmurhash2 import murmurhash2; import sys; print(murmurhash2(sys.argv[1].encode("utf-8"), 0x31415926))`,
@@ -334,7 +334,7 @@ app.post("/api/builds/edit", async (req, res) => {
     try {
         const stdout = await new Promise<string>((resolve, reject) => {
             execFile(
-                "py",
+                "../deadlock-kv3-to-json/venv/bin/python",
                 [
                     "../deadlock-kv3-to-json/api.py",
                     resolvedPath,
