@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import FilePicker from "./components/FilePicker";
 import BuildsList from "./components/BuildsList";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import UploadOverlay from "./components/UploadOverlay";
 
 const SESSION_STORAGE_KEY = "deadlock-build-editor-session-id";
 
@@ -266,9 +268,13 @@ export default function App() {
     return name.toLowerCase().includes(buildSearch.toLowerCase());
   });
 
+  const fileReady = Boolean(fileId || kv3Path);
+
   return (
-    <div className="app">
-      <BuildsList
+    <div className="page">
+      <Header />
+      <main className="app">
+        <BuildsList
         builds={filteredBuilds}
         selectedIndex={selectedIndex}
         onSelect={(index) => {
@@ -284,19 +290,19 @@ export default function App() {
         saveFeedback={saveFeedback}
         searchValue={buildSearch}
         onSearchChange={setBuildSearch}
-        onUpload={handleUpload}
-        loading={loading}
-        error={error}
         onOriginalDownload={handleOriginalDownload}
         onDownloadEdited={handleDownload}
         downloadReady={downloadReady}
-        fileReady={Boolean(fileId || kv3Path)}
+        fileReady={fileReady}
         abilityName={abilityName}
         onAbilityNameChange={setAbilityName}
         onAbilityConvert={handleAbilityConvert}
         abilityIdLoading={abilityIdLoading}
         abilityIdResult={abilityIdResult}
-      />
+        />
+        {!fileReady && <UploadOverlay onUpload={handleUpload} loading={loading} error={error} />}
+      </main>
+      <Footer />
     </div>
   );
 }
