@@ -131,9 +131,12 @@ export default function BuildsList({
                     {abilityIdLoading ? "..." : "Convert"}
                   </button>
                   <span className="ability-converter-label">ID</span>
-                  <div className="ability-id-output" aria-live="polite">
-                    {abilityIdResult || "—"}
-                  </div>
+                  <input
+                    className="ability-id-output"
+                    type="text"
+                    value={abilityIdResult ?? ""}
+                    placeholder="3776945997"
+                  />
                 </div>
               </>
           </div>
@@ -141,7 +144,7 @@ export default function BuildsList({
       </div>
 
       <div className="build-actions panel-card">
-        <p className="build-actions-note">Have the game closed before replacing the KV3 file in the folder.</p>
+        <p className="build-actions-note">Have the game closed before replacing the KV3 file in the folder!</p>
         <div className="build-actions-buttons">
           <button type="button" className="secondary-button" onClick={onOriginalDownload} disabled={!fileReady}>
             Download Original KV3
