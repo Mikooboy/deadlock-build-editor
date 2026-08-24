@@ -144,7 +144,7 @@ export default function BuildsList({
       </div>
 
       <div className="build-actions panel-card">
-        <p className="build-actions-note">Have the game closed before replacing the KV3 file in the folder!</p>
+        <p className="build-actions-note">Have the game closed before replacing the KV3 file in the cfg folder!</p>
         <div className="build-actions-buttons">
           <button type="button" className="secondary-button" onClick={onOriginalDownload} disabled={!fileReady}>
             Download Original KV3
