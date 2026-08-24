@@ -119,6 +119,7 @@ button, input, textarea { font: inherit; }
  background: rgba(24, 24, 24, 0.92);
  backdrop-filter: blur(8px);
  box-shadow: var(--shadow);
+ z-index: 10;
 }
 
 .site-footer-inner {
