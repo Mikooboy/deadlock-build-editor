@@ -107,28 +107,32 @@ export default function BuildsList({
                       />
                     </div>
                 <div className="ability-converter">
-                  <span className="ability-converter-label">Ability ID</span>
-                  <div className="ability-row">
-                    <input
-                      type="text"
-                      value={abilityName ?? ""}
-                      onChange={(e) => onAbilityNameChange?.(e.target.value)}
-                      placeholder="upgrade_extra_charge"
-                      className="ability-input"
-                      aria-label="Ability name"
-                    />
-                    <button
-                      type="button"
-                      className="convert-button"
-                      onClick={onAbilityConvert}
-                      disabled={abilityIdLoading}
-                    >
-                      {abilityIdLoading ? "..." : "Convert"}
-                    </button>
-                  </div>
-                  <div className="ability-result" aria-live="polite">
-                    <span className="ability-result-label">ID</span>
-                    <code className="ability-result-value">{abilityIdResult || "—"}</code>
+                  <label className="ability-converter-label" htmlFor="ability-name-input">
+                    Name
+                  </label>
+                  <input
+                    id="ability-name-input"
+                    type="text"
+                    value={abilityName ?? ""}
+                    onChange={(e) => onAbilityNameChange?.(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") onAbilityConvert?.();
+                    }}
+                    placeholder="upgrade_extra_charge"
+                    className="ability-input"
+                  />
+                  <button
+                    type="button"
+                    className="convert-button"
+                    onClick={onAbilityConvert}
+                    disabled={abilityIdLoading}
+                    aria-label="Convert ability name to ID"
+                  >
+                    {abilityIdLoading ? "..." : "Convert"}
+                  </button>
+                  <span className="ability-converter-label">ID</span>
+                  <div className="ability-id-output" aria-live="polite">
+                    {abilityIdResult || "—"}
                   </div>
                 </div>
               </>

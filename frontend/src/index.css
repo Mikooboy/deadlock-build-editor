@@ -342,6 +342,8 @@ h2, h3 {
  cursor: pointer;
  font-weight: 700;
  line-height: 1;
+ text-align: center;
+ white-space: nowrap;
  transition: filter 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
 }
 
@@ -372,12 +374,27 @@ h2, h3 {
  border-color: #4a9d7b;
 }
 
+.save-button {
+ min-width: 6.75rem;
+}
+
+.convert-button {
+ width: 6.25rem;
+ min-width: 6.25rem;
+ flex-shrink: 0;
+}
+
+.secondary-button,
+.download-button {
+ min-width: 11.5rem;
+}
+
 .ability-converter {
  display: flex;
  align-items: center;
- gap: 12px;
- margin-top: 12px;
- padding: 10px 14px;
+ gap: 10px;
+ margin-top: 10px;
+ padding: 10px 12px;
  border: 1px solid var(--border);
  border-radius: var(--radius);
  background: var(--surface);
@@ -386,60 +403,40 @@ h2, h3 {
 
 .ability-converter-label {
  flex-shrink: 0;
- font-size: 0.82rem;
+ font-size: 0.78rem;
  font-weight: 600;
  color: var(--muted);
  white-space: nowrap;
 }
 
-.ability-row {
- display: flex;
+.ability-input,
+.ability-id-output {
  flex: 1;
  min-width: 0;
- gap: 12px;
- align-items: stretch;
-}
-
-.ability-input {
- flex: 1;
- min-width: 0;
+ height: 38px;
  padding: 10px 12px;
  border: 1px solid var(--border);
  border-radius: var(--radius);
- background: var(--bg-2);
+ background: var(--surface);
  color: var(--text);
- font-size: 0.9rem;
- height: 38px;
+ font-size: inherit;
  box-sizing: border-box;
+ box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
-.ability-result {
- flex-shrink: 0;
+.ability-id-output {
  display: flex;
  align-items: center;
- gap: 8px;
- height: 38px;
- padding: 0 12px;
- box-sizing: border-box;
- border-radius: var(--radius);
- background: var(--bg-2);
- border: 1px solid var(--border);
- min-width: 140px;
-}
-
-.ability-result-label {
- font-size: 0.72rem;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.04em;
- color: var(--muted);
-}
-
-.ability-result-value {
  font-family: Consolas, "SFMono-Regular", monospace;
- font-size: 0.88rem;
  color: var(--muted-strong);
- word-break: break-all;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+
+.ability-converter .convert-button {
+ height: 38px;
+ padding: 10px 16px;
 }
 
 .builds {
@@ -780,18 +777,20 @@ textarea:focus-visible {
  }
 
  .ability-converter {
-   flex-wrap: wrap;
-   gap: 10px;
+  flex-wrap: wrap;
+  row-gap: 6px;
  }
 
- .ability-row {
-   flex: 1 1 180px;
+ .ability-input {
+  flex: 1 1 140px;
  }
 
- .ability-result {
-   flex: 1 1 100%;
-   min-width: 0;
-   justify-content: space-between;
+ .ability-id-output {
+  flex: 1 1 100px;
+ }
+
+ .ability-converter .convert-button {
+  width: auto;
  }
 
  .build-actions {
